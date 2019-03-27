@@ -55,7 +55,7 @@ const ExteriorColorChecked = styled.div`
 `
 
 const getCarImage = (color, name) => {
-  const imagePath = `${baseUrl}/images/car/${color}/${name}.jpeg`
+  const imagePath = `${baseUrl}/images/car/colorSet/${color}/${name}.jpeg`
   const images = {
     original: imagePath,
     thumbnail: imagePath
@@ -108,11 +108,11 @@ const App = () => {
       <h2>Exterior Colors</h2>
       <ExteriorColor>
         <li onClick={() => setColor('red')}>
-          <Image src={`car/colorSet/red.jpg`} width="100%" />
+          <Image src={`car/colorSet/red/tiles.jpg`} width="100%" />
           {color === 'red' && <ExteriorColorChecked />}
         </li>
         <li onClick={() => setColor('gray')}>
-          <Image src={`car/colorSet/gray.jpg`} width="100%" />
+          <Image src={`car/colorSet/gray/tiles.jpg`} width="100%" />
           {color === 'gray' && <ExteriorColorChecked />}
         </li>
       </ExteriorColor>
