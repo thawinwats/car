@@ -1,8 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-import { baseUrl } from '../../config'
-
 const ImageStyle = styled.img`
   ${(props) => {
     const { width, height, margin, padding } = props
@@ -14,11 +12,6 @@ const ImageStyle = styled.img`
   }};
 `
 
-const Image = (props) => {
-  const imagePath = `${baseUrl}/images/${props.src}`
-  const { width, height, margin, padding } = props
-
-  return <ImageStyle src={imagePath} width={width} height={height} margin={margin} padding={padding} />
-}
+const Image = (props) => <ImageStyle {...props} />
 
 export default Image

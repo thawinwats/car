@@ -23,13 +23,13 @@ const ExteriorColorStyle = styled.ul`
 `
 
 const ExteriorColorList = (props) => {
-  const { allColor, color, setColor } = props
+  const { cars, color, setColor } = props
 
-  const list = allColor.map((ownColor) => {
+  const list = cars.map((car) => {
     return (
-      <li onClick={() => setColor(ownColor)}>
-        <Image src={`car/colorSet/${ownColor}/tiles.jpg`} width="100%" />
-        {color === ownColor && <ExteriorColorChecked />}
+      <li onClick={() => setColor(car.id)} key={`color-${car.name}-${car.id}`}>
+        <Image src={car.tilesImage} width="100%" />
+        {color === car.name && <ExteriorColorChecked />}
       </li>
     )
   })

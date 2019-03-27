@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 
 import Gallery from './component/Gallery/Gallery'
-import CarInfo from './component/CarInfo/CarInfo'
+import CarInfo from './component/ExteriorColor/ExteriorColorInfo'
 import ExteriorColor from './component/ExteriorColor/ExteriorColor'
 
-import { baseUrl } from './config'
+import { cars } from './db/db'
 
-const getCarImage = (color, name) => {
-  const imagePath = `${baseUrl}/images/car/colorSet/${color}/${name}.jpeg`
+const getCarImage = (imagePath) => {
   const images = {
     original: imagePath,
     thumbnail: imagePath
@@ -17,17 +16,18 @@ const getCarImage = (color, name) => {
 }
 
 const App = () => {
-  const [ color, setColor ] = useState('red')
+  const [ selectedCarId, setSelectedCarId ] = useState(0)
+  const [ selectedWheelsId, setSelectedWheelsId ] = useState(0)
 
-  const images = [ ...Array(4).keys() ].map((i) => getCarImage(color, i + 1))
+  const car = cars.find(({ id }) => id === +selectedCarId)
+  const wheels = car.wheels.find(({ id }) => id === +selectedWheelsId)
 
-  const allColor = [ 'red', 'gray' ]
+  const images = wheels.images.map((image) => getCarImage(image))
 
   return (
     <div style={{ padding: '2rem' }}>
       <Gallery items={images} />
-      <ExteriorColor color={color} setColor={setColor} allColor={allColor} />
-      <CarInfo color={color} />
+      <ExteriorColor color={car.name} setColor={setSelectedCarId} cars={cars} name={car.name} price={car.price} />
     </div>
   )
 }
