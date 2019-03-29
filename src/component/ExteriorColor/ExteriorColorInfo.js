@@ -13,7 +13,6 @@ const ExteriorColorInfoStyles = styled.div`
 
 const ExteriorColorInfo = (props) => {
   const { name, price } = props
-  console.log(`> : ExteriorColorInfo -> price`, price)
 
   return (
     <ExteriorColorInfoStyles>

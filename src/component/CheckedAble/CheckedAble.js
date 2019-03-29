@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ExteriorColorCheckedStyle = styled.div`
+const CheckedAbleStyle = styled.div`position: relative;`
+
+const CheckedStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,6 +34,10 @@ const ExteriorColorCheckedStyle = styled.div`
   }
 `
 
-const ExteriorColorChecked = () => <ExteriorColorCheckedStyle />
+const CheckedAble = () => (
+  <CheckedAbleStyle>
+    <CheckedStyle />
+  </CheckedAbleStyle>
+)
 
-export default ExteriorColorChecked
+export default CheckedAble

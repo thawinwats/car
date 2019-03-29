@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import ExteriorColorChecked from './ExteriorColorChecked'
+import CheckedAble from '../CheckedAble/CheckedAble'
 
 import Image from '../Image/Image'
 
@@ -29,7 +29,7 @@ const ExteriorColorList = (props) => {
     return (
       <li onClick={() => setColor(car.id)} key={`color-${car.name}-${car.id}`}>
         <Image src={car.tilesImage} width="100%" />
-        {color === car.name && <ExteriorColorChecked />}
+        {color === car.name && <CheckedAble />}
       </li>
     )
   })

@@ -3,7 +3,6 @@ import ExteriorColorInfo from './ExteriorColorInfo'
 import ExteriorColorList from './ExteriorColorList'
 
 const ExteriorColor = (props) => {
-  console.log(`> : ExteriorColor -> props`, props)
   const { name, price, ...otherProps } = props
   return (
     <React.Fragment>
