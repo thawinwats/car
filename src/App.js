@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
 import Gallery from './component/Gallery/Gallery'
-import CarInfo from './component/ExteriorColor/ExteriorColorInfo'
 import ExteriorColor from './component/ExteriorColor/ExteriorColor'
+import Wheels from './component/Wheels/Wheels'
+import CarInfo from './component/CarInfo/CarInfo'
 
 import { cars } from './db/db'
 
@@ -25,9 +26,32 @@ const App = () => {
   const images = wheels.images.map((image) => getCarImage(image))
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <Gallery items={images} />
-      <ExteriorColor color={car.name} setColor={setSelectedCarId} cars={cars} name={car.name} price={car.price} />
+    <div>
+      <Gallery items={images} showFullscreenButton={false} showPlayButton={false} />
+      <div style={{ display: 'flex', padding: '2rem' }}>
+        <div style={{ width: '50%' }}>
+          <ExteriorColor color={car.name} setColor={setSelectedCarId} cars={cars} name={car.name} price={car.price} />
+          <Gallery
+            items={images}
+            startIndex={6}
+            showNav={false}
+            showFullscreenButton={false}
+            showPlayButton={false}
+            showThumbnails={false}
+            disableArrowKeys={true}
+          />
+          <Wheels
+            type={car.wheels}
+            price={wheels.price}
+            description={wheels.description}
+            selectedType={selectedWheelsId}
+            setSelectedType={setSelectedWheelsId}
+          />
+        </div>
+        <div style={{ width: '50%', 'justify-content': 'flex-end', display: 'flex' }}>
+          {/* <CarInfo images={images} /> */}
+        </div>
+      </div>
     </div>
   )
 }
