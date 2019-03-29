@@ -28,7 +28,7 @@ const App = () => {
   return (
     <div>
       <Gallery items={images} showFullscreenButton={false} showPlayButton={false} />
-      <div style={{ display: 'flex', padding: '2rem' }}>
+      <div style={{ display: 'flex', padding: '3rem' }}>
         <div style={{ width: '50%' }}>
           <ExteriorColor color={car.name} setColor={setSelectedCarId} cars={cars} name={car.name} price={car.price} />
           <Gallery
@@ -49,7 +49,7 @@ const App = () => {
           />
         </div>
         <div style={{ width: '50%', 'justify-content': 'flex-end', display: 'flex' }}>
-          {/* <CarInfo images={images} /> */}
+          <CarInfo images={images} />
         </div>
       </div>
     </div>
