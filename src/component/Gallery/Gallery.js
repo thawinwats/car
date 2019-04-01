@@ -4,10 +4,15 @@ import 'react-image-gallery/styles/css/image-gallery.css'
 // import 'react-image-gallery/styles/css/image-gallery-no-icon.css'
 
 import GalleryArrow from './GalleryArrow'
+import GalleryFullscreenButton from './GalleryFullscreenButton'
 
 import styled from 'styled-components'
 
 const GalleryStyle = styled.div`
+  .image-gallery-slides {
+    background: #ffffff;
+  }
+
   .image-gallery-thumbnails {
     padding: .5rem 0;
     /* overflow-x: scroll; */
@@ -39,7 +44,12 @@ const RightNav = (onClick, disabled) => {
 const Gallery = (props) => {
   return (
     <GalleryStyle>
-      <ImageGallery {...props} renderLeftNav={LeftNav} renderRightNav={RightNav} />
+      <ImageGallery
+        {...props}
+        renderLeftNav={LeftNav}
+        renderRightNav={RightNav}
+        renderFullscreenButton={GalleryFullscreenButton}
+      />
     </GalleryStyle>
   )
 }

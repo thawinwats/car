@@ -12,7 +12,6 @@ const WheelsInfoStyles = styled.div`
 `
 
 const WheelsInfo = (props) => {
-  console.log(`> : WheelsInfo -> props`, props)
   const { description, price } = props
 
   return (
