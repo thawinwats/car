@@ -6,6 +6,15 @@ import styled, { css } from 'styled-components'
 
 const CarInfoStyle = styled.div`
   display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+`
+
+const CarInfoWrapper = styled.div`
+  display: flex;
   flex-direction: column;
 
   border: 1px solid #000;
@@ -13,6 +22,11 @@ const CarInfoStyle = styled.div`
   width: 60%;
   min-width: 400px;
   margin-top: 20px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin-top: 30px;
+  }
 
   h2 {
     margin: 0;
@@ -25,7 +39,7 @@ const CarInfoStyle = styled.div`
   }
 `
 
-const CarInfoWrapper = styled.div`
+const CarInfoContainer = styled.div`
   margin: 1rem;
 
   display: flex;
@@ -51,15 +65,17 @@ const CarInfo = (props) => {
   return (
     <CarInfoStyle>
       <CarInfoWrapper>
-        <h2>R8 Coupe</h2>
-        <p>5.2 FSI RWS</p>
-      </CarInfoWrapper>
-      <Gallery {...gallerySetting} />
-      <CarInfoWrapper space>
-        <CarPrice modalPrice={modalPrice} optionalPrice={optionalPrice} destinationCharge={destinationCharge} />
-      </CarInfoWrapper>
-      <CarInfoWrapper>
-        <RequestButton>Request a quote</RequestButton>
+        <CarInfoContainer>
+          <h2>R8 Coupe</h2>
+          <p>5.2 FSI RWS</p>
+        </CarInfoContainer>
+        <Gallery {...gallerySetting} />
+        <CarInfoContainer space>
+          <CarPrice modalPrice={modalPrice} optionalPrice={optionalPrice} destinationCharge={destinationCharge} />
+        </CarInfoContainer>
+        <CarInfoContainer>
+          <RequestButton>Request a quote</RequestButton>
+        </CarInfoContainer>
       </CarInfoWrapper>
     </CarInfoStyle>
   )

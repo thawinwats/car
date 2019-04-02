@@ -27,6 +27,10 @@ const GalleryStyle = styled.div`
     transition: none;
     width: 260px;
 
+    @media (max-width: 1024px) {
+      width: 160px;
+    }
+
     &.active {
       border: 1px solid #000;
     }

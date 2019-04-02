@@ -15,19 +15,31 @@ const Wrapper = styled.div`
 `
 
 const Container = styled.div`
-  max-width: 1400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: #fff;
+
+  width: 100vw;
+  max-width: 1400px;
 `
 
 const MainContent = styled.main`
   display: flex;
   padding: 3rem;
+
+  @media (max-width: 1024px) {
+    padding: 0.5rem;
+    flex-direction: column;
+  }
 `
 
-const HalfWidth = styled.div`width: 50%;`
+const HalfWidth = styled.div`
+  width: 50%;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+`
 
 const App = () => {
   // const [ selectedCarId, setSelectedCarId ] = useState(0)
@@ -94,7 +106,7 @@ const App = () => {
               setSelectedType={setSelectedWheelsId}
             />
           </HalfWidth>
-          <HalfWidth style={{ justifyContent: 'flex-end', display: 'flex' }}>
+          <HalfWidth>
             <CarInfo
               gallerySetting={carInfoGallerySetting}
               modalPrice={+modal.price}

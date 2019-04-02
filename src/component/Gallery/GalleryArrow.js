@@ -2,9 +2,15 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 const GalleryArrowStyle = styled.div`
+  --arrow-size: 50px;
+
+  @media (max-width: 1024px) {
+    --arrow-size: 25px;
+  }
+
   background: #000000;
-  width: 50px;
-  height: 50px;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
   position: absolute;
   z-index: 4;
   cursor: pointer;
@@ -22,7 +28,22 @@ const GalleryArrowStyle = styled.div`
 
   &:after {
     --size: 20px;
-    --left-right: 16px
+    --left-right: 16px;
+
+    @media (max-width: 1024px) {
+      --size: 5px;
+      --left-right: 8px;
+
+      top: 9px;
+
+      ${(props) => {
+        const leftSide = css`border-width: 2px 0 0 2px;`
+        const rightSide = css`border-width: 0 2px 2px 0;`
+
+        return props.leftSide ? leftSide : rightSide
+      }};
+    }
+
     content: '';
     display: block;
 
