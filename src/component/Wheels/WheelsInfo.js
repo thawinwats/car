@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberFormat from 'react-number-format'
 import styled from 'styled-components'
 
 const WheelsInfoStyles = styled.div`
@@ -17,7 +18,11 @@ const WheelsInfo = (props) => {
   return (
     <WheelsInfoStyles>
       <p>{description}</p>
-      <span>{+price === 0 ? 'Standard' : `$${price}`}</span>
+      {+price === 0 ? (
+        <span>Standard</span>
+      ) : (
+        <NumberFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+      )}
     </WheelsInfoStyles>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberFormat from 'react-number-format'
 import Gallery from '../Gallery/Gallery'
 
 import styled from 'styled-components'
@@ -9,10 +10,9 @@ const CarInfoStyle = styled.div`
 
   border: 1px solid #000;
 
-  /* position: fixed; */
-
   width: 60%;
-  /* width: 30%; */
+  min-width: 400px;
+
   h2 {
     margin: 0;
     font-weight: normal;
@@ -58,44 +58,41 @@ const RequestButton = styled.button`
   padding: 1.3rem;
   font-size: 1rem;
   width: 100%;
+  cursor: pointer;
 `
 
 const CarInfo = (props) => {
-  const { images } = props
+  const { gallerySetting, modalPrice = 0, exteriorColorPrice = 0, wheelsPrice = 0, destinationCharge = 0 } = props
+
+  const optionalPrice = exteriorColorPrice + wheelsPrice
+  const totalPrice = modalPrice + optionalPrice + destinationCharge
+
   return (
     <CarInfoStyle>
       <CarInfoWrapper>
         <h2>R8 Coupe</h2>
         <p>5.2 FSI RWS</p>
       </CarInfoWrapper>
-      <Gallery
-        items={images}
-        startIndex={1}
-        showNav={false}
-        showFullscreenButton={false}
-        showPlayButton={false}
-        showThumbnails={false}
-        disableArrowKeys={true}
-      />
+      <Gallery {...gallerySetting} />
       <CarInfoWrapper style={{ flexGrow: 1 }}>
         <CarPrice>
           <ul>
             <li>
               <span>MSRP</span>
-              <span>$138,700</span>
+              <NumberFormat value={modalPrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </li>
             <li>
               <span>Optional equipment</span>
-              <span>$575</span>
+              <NumberFormat value={optionalPrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </li>
             <li>
               <span>Destination Charge</span>
-              <span>$1,250</span>
+              <NumberFormat value={destinationCharge} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </li>
           </ul>
           <div className="total">
             <span>Price as built</span>
-            <h3>$140,525</h3>
+            <NumberFormat value={totalPrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
           </div>
         </CarPrice>
       </CarInfoWrapper>

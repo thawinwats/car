@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberFormat from 'react-number-format'
 import styled from 'styled-components'
 
 const ExteriorColorInfoStyles = styled.div`
@@ -17,7 +18,7 @@ const ExteriorColorInfo = (props) => {
   return (
     <ExteriorColorInfoStyles>
       <p>{name}</p>
-      <span>${price}</span>
+      <NumberFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
     </ExteriorColorInfoStyles>
   )
 }

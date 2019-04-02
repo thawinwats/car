@@ -23,9 +23,9 @@ const ExteriorColorStyle = styled.ul`
 `
 
 const ExteriorColorList = (props) => {
-  const { cars, color, setColor } = props
+  const { carColorSet, color, setColor } = props
 
-  const list = cars.map((car) => {
+  const list = carColorSet.map((car) => {
     return (
       <li onClick={() => setColor(car.id)} key={`color-${car.name}-${car.id}`}>
         <Image src={car.tilesImage} width="100%" />
