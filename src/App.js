@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 
 import Gallery from './component/Gallery/Gallery'
 import ExteriorColor from './component/ExteriorColor/ExteriorColor'
@@ -7,21 +8,34 @@ import CarInfo from './component/CarInfo/CarInfo'
 
 import { cars } from './db/db'
 
-const getCarImage = (imagePath) => {
-  const images = {
-    original: imagePath,
-    thumbnail: imagePath
-  }
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
 
-  return images
-}
+const Container = styled.div`
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+`
+
+const MainContent = styled.main`
+  display: flex;
+  padding: 3rem;
+`
+
+const HalfWidth = styled.div`width: 50%;`
 
 const App = () => {
-  const [ selectedCarId, setSelectedCarId ] = useState(0)
+  // const [ selectedCarId, setSelectedCarId ] = useState(0)
   const [ selectedColorSetId, setSelectedColorSetId ] = useState(0)
   const [ selectedWheelsId, setSelectedWheelsId ] = useState(0)
   const [ isFullScreen, setIsFullScreen ] = useState(false)
 
+  const selectedCarId = 0
   const modal = cars[selectedCarId]
   const { colorSet } = modal
 
@@ -30,7 +44,12 @@ const App = () => {
 
   const destinationCharge = 1250
 
-  const images = wheels.images.map((image) => getCarImage(image))
+  const images = wheels.images.map((image) => {
+    return {
+      original: image,
+      thumbnail: image
+    }
+  })
 
   const gallerySetting = {
     items: images,
@@ -54,37 +73,39 @@ const App = () => {
   }
 
   return (
-    <div style={{ maxWidth: '1400px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-      <Gallery items={images} showFullscreenButton={false} showPlayButton={false} useBrowserFullscreen={false} />
-      <div style={{ display: 'flex', padding: '3rem' }}>
-        <div style={{ width: '50%' }}>
-          <ExteriorColor
-            color={car.name}
-            setColor={setSelectedColorSetId}
-            carColorSet={colorSet}
-            name={car.name}
-            price={car.price}
-          />
-          <Gallery {...wheelsGallerySetting} />
-          <Wheels
-            type={car.wheels}
-            price={wheels.price}
-            description={wheels.description}
-            selectedType={selectedWheelsId}
-            setSelectedType={setSelectedWheelsId}
-          />
-        </div>
-        <div style={{ width: '50%', justifyContent: 'flex-end', display: 'flex' }}>
-          <CarInfo
-            gallerySetting={carInfoGallerySetting}
-            modalPrice={+modal.price}
-            exteriorColorPrice={+car.price}
-            wheelsPrice={+wheels.price}
-            destinationCharge={+destinationCharge}
-          />
-        </div>
-      </div>
-    </div>
+    <Wrapper>
+      <Container>
+        <Gallery items={images} showFullscreenButton={false} showPlayButton={false} useBrowserFullscreen={false} />
+        <MainContent>
+          <HalfWidth>
+            <ExteriorColor
+              color={car.name}
+              setColor={setSelectedColorSetId}
+              carColorSet={colorSet}
+              name={car.name}
+              price={car.price}
+            />
+            <Gallery {...wheelsGallerySetting} />
+            <Wheels
+              type={car.wheels}
+              price={wheels.price}
+              description={wheels.description}
+              selectedType={selectedWheelsId}
+              setSelectedType={setSelectedWheelsId}
+            />
+          </HalfWidth>
+          <HalfWidth style={{ justifyContent: 'flex-end', display: 'flex' }}>
+            <CarInfo
+              gallerySetting={carInfoGallerySetting}
+              modalPrice={+modal.price}
+              exteriorColorPrice={+car.price}
+              wheelsPrice={+wheels.price}
+              destinationCharge={+destinationCharge}
+            />
+          </HalfWidth>
+        </MainContent>
+      </Container>
+    </Wrapper>
   )
 }
 

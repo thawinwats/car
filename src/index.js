@@ -12,8 +12,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Mitr', sans-serif;
-  /* background: black; */
 
+  max-width: 100vw;
+  background: #231d1d;
+  display: flex;
+  justify-content: center;
 }
 `
 
