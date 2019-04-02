@@ -7,6 +7,11 @@ import styled from 'styled-components'
 const GalleryFullscreenButtonStyle = styled.div`
   .image-gallery-fullscreen-button {
     --size: 25px;
+
+    @media (max-width: 1024px) {
+      --size: 15px;
+    }
+
     width: var(--size);
     height: var(--size);
     background: #000;
@@ -18,7 +23,11 @@ const GalleryFullscreenButtonStyle = styled.div`
     &.active {
       --size: 40px;
 
-      top: 0;
+      @media (max-width: 1024px) {
+        --size: 15px;
+      }
+
+      top: -1px;
       margin: 0;
     }
   }
