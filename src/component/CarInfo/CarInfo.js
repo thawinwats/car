@@ -26,6 +26,7 @@ const CarInfoWrapper = styled.div`
   @media (max-width: 1024px) {
     width: 100%;
     margin-top: 30px;
+    min-width: unset;
   }
 
   h2 {

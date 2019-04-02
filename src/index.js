@@ -13,7 +13,10 @@ body {
   padding: 0;
   font-family: 'Mitr', sans-serif;
 
-  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  /* max-width: 100vw; */
+
   background: #231d1d;
   display: flex;
   justify-content: center;

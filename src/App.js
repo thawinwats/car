@@ -21,7 +21,11 @@ const Container = styled.div`
   background: #fff;
 
   width: 100vw;
-  max-width: 1400px;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    max-width: 1400px;
+  }
 `
 
 const MainContent = styled.main`
